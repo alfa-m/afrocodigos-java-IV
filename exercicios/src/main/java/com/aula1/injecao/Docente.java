@@ -1,6 +1,6 @@
 package main.java.com.aula1.injecao;
 
-public class Docente  implements Prova{
+public class Docente implements Prova{
     private String nome;
 
     public Docente() {
