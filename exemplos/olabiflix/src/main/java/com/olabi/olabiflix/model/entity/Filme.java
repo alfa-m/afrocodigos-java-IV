@@ -3,7 +3,7 @@ package com.olabi.olabiflix.model.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.UuidGenerator;
+import org.hibernate.annotations.UuidGenerator;
 import java.util.UUID;
 
 @Entity
@@ -27,6 +27,7 @@ public class Filme {
     private String Awards;
 
     public Filme(String title, String year, String rated, String released, String runtime, String genre, String director, String writer, String actors, String plot, String language, String country, String awards) {
+        id = UUID.randomUUID();
         Title = title;
         Year = year;
         Rated = rated;
