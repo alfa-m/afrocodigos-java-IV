@@ -1,6 +1,6 @@
 package com.olabi.olabiflix.model.entity;
 
-//import com.olabi.olabiflix.model.value.Rating;
+import com.olabi.olabiflix.model.value.Ratings;
 import jakarta.persistence.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -19,14 +19,14 @@ public class Serie {
     private ArrayList<String> writers;
     private String poster;
     private ArrayList<String> actors;
-    //@OneToOne
-    //@PrimaryKeyJoinColumn()
-    //private Rating ratings;
+    @OneToOne(cascade=CascadeType.PERSIST)
+    @JoinColumn(name="ratingsID")
+    private Ratings ratings;
+
 
     protected Serie(){}
 
-    /*
-    public Serie(String title, String totalSeasons, ArrayList<String> genre, ArrayList<String> writers, String poster, ArrayList<String> actors, Rating ratings) {
+    public Serie(String title, String totalSeasons, ArrayList<String> genre, ArrayList<String> writers, String poster, ArrayList<String> actors, Ratings ratings) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.totalSeasons = totalSeasons;
@@ -35,8 +35,8 @@ public class Serie {
         this.poster = poster;
         this.actors = actors;
         this.ratings = ratings;
+        System.out.printf("Série '%s' criada com sucesso\n", title);
     }
-    */
 
     public Serie(String title, String totalSeasons, ArrayList<String> genre, ArrayList<String> writers, String poster, ArrayList<String> actors) {
         this.id = UUID.randomUUID();
@@ -46,6 +46,7 @@ public class Serie {
         this.writers = writers;
         this.poster = poster;
         this.actors = actors;
+        System.out.printf("Série '%s' criada com sucesso\n", title);
     }
 
     public UUID getId() {
@@ -104,13 +105,12 @@ public class Serie {
         this.actors = actors;
     }
 
-    /*
-    public Rating getRatings() {
+    public Ratings getRatings() {
         return ratings;
     }
 
-    public void setRatings(Rating ratings) {
+    public void setRatings(Ratings ratings) {
         this.ratings = ratings;
     }
-    */
+
 }

@@ -2,9 +2,10 @@ package com.olabi.olabiflix.config;
 
 import com.olabi.olabiflix.model.entity.Filme;
 import com.olabi.olabiflix.model.entity.Serie;
-//import com.olabi.olabiflix.model.value.Rating;
+import com.olabi.olabiflix.model.value.Ratings;
 import com.olabi.olabiflix.repository.FilmeRepository;
 import com.olabi.olabiflix.repository.SerieRepository;
+import com.olabi.olabiflix.repository.RatingsRepository;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.boot.CommandLineRunner;
@@ -20,10 +21,12 @@ public class DatabaseInitializer implements CommandLineRunner {
     private static final Logger log = LoggerFactory.getLogger(DatabaseInitializer.class);
     private final FilmeRepository filmeRepository;
     private final SerieRepository serieRepository;
+    private final RatingsRepository ratingsRepository;
 
-    public DatabaseInitializer(FilmeRepository filmeRepository, SerieRepository serieRepository){
+    public DatabaseInitializer(FilmeRepository filmeRepository, SerieRepository serieRepository, RatingsRepository ratingsRepository){
         this.filmeRepository = filmeRepository;
         this.serieRepository = serieRepository;
+        this.ratingsRepository = ratingsRepository;
     }
 
     public static final List<Filme> filmes = List.of(
@@ -32,17 +35,17 @@ public class DatabaseInitializer implements CommandLineRunner {
     );
 
     public static final List<Serie> series = List.of(
-            //new Serie("Game of Thrones","8",new ArrayList<String>(Arrays.asList("Action","Adventure","Drama","Fantasy","Romance")),new ArrayList<String>(Arrays.asList("David Benioff","D.B. Weiss")),"https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_SX300.jpg",new ArrayList<String>(Arrays.asList("Peter Dinklage","Lena Headey","Emilia Clarke","Kit Harington")), new Rating("9.3","1679892"))
-            new Serie("Game of Thrones","8",new ArrayList<String>(Arrays.asList("Action","Adventure","Drama","Fantasy","Romance")),new ArrayList<String>(Arrays.asList("David Benioff","D.B. Weiss")),"https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_SX300.jpg",new ArrayList<String>(Arrays.asList("Peter Dinklage","Lena Headey","Emilia Clarke","Kit Harington")))
+            new Serie("Game of Thrones","8",new ArrayList<String>(Arrays.asList("Action","Adventure","Drama","Fantasy","Romance")),new ArrayList<String>(Arrays.asList("David Benioff","D.B. Weiss")),"https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_SX300.jpg",new ArrayList<String>(Arrays.asList("Peter Dinklage","Lena Headey","Emilia Clarke","Kit Harington")),new Ratings("9.3","1679892"))
+            //new Serie("Game of Thrones","8",new ArrayList<String>(Arrays.asList("Action","Adventure","Drama","Fantasy","Romance")),new ArrayList<String>(Arrays.asList("David Benioff","D.B. Weiss")),"https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_SX300.jpg",new ArrayList<String>(Arrays.asList("Peter Dinklage","Lena Headey","Emilia Clarke","Kit Harington")))
     );
 
     @Override
     public void run(String... args) throws Exception {
         log.info("Banco conectado");
         filmeRepository.saveAll(filmes);
-        filmeRepository.findAll().forEach(filme -> System.out.printf("Título: %s. ID %s \n", filme.getTitle(), filme.getId().toString()));
+        filmeRepository.findAll().forEach(filme -> System.out.printf("\nFilme\nTítulo: %s\nID: %s \n", filme.getTitle(), filme.getId().toString()));
 
         serieRepository.saveAll(series);
-        serieRepository.findAll().forEach(serie -> System.out.printf("Título: %s. ID %s \n", serie.getTitle(), serie.getId().toString()));
+        serieRepository.findAll().forEach(serie -> System.out.printf("\nSérie\nTítulo: %s\nID: %s \n", serie.getTitle(), serie.getId().toString()));
     }
 }

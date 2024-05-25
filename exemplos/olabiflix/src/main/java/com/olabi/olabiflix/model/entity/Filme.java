@@ -42,6 +42,7 @@ public class Filme {
         Language = language;
         Country = country;
         Awards = awards;
+        System.out.printf("Filme '%s' criado com sucesso\n",Title);
     }
 
     public UUID getId() {
