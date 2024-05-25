@@ -10,7 +10,7 @@ public class Ratings {
     @Id
     @SequenceGenerator(name = "ratingsSequence", sequenceName = "ratingsSeq", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ratingsSequence")
-    @Column(name="ratingsID")
+   // @Column(name="ratingsID")
     private Long ratingID;
     private String rating;
     private String likes;

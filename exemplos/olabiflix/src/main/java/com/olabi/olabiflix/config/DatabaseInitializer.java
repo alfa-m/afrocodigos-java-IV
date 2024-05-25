@@ -39,6 +39,11 @@ public class DatabaseInitializer implements CommandLineRunner {
             //new Serie("Game of Thrones","8",new ArrayList<String>(Arrays.asList("Action","Adventure","Drama","Fantasy","Romance")),new ArrayList<String>(Arrays.asList("David Benioff","D.B. Weiss")),"https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_SX300.jpg",new ArrayList<String>(Arrays.asList("Peter Dinklage","Lena Headey","Emilia Clarke","Kit Harington")))
     );
 
+    public static final List<Ratings> ratings = List.of(
+            new Ratings(series.getFirst().getRatings().getRating(),series.getFirst().getRatings().getLikes()),
+            new Ratings("9.2","222")
+    );
+
     @Override
     public void run(String... args) throws Exception {
         log.info("Banco conectado");
@@ -47,5 +52,9 @@ public class DatabaseInitializer implements CommandLineRunner {
 
         serieRepository.saveAll(series);
         serieRepository.findAll().forEach(serie -> System.out.printf("\nSérie\nTítulo: %s\nID: %s \n", serie.getTitle(), serie.getId().toString()));
+
+        ratingsRepository.saveAll(ratings);
+        ratingsRepository.findAll().forEach(rating -> System.out.printf("\nRatings\nID: %d\nRating: %s\nLikes: %s \n", rating.getRatingID(), rating.getRating(), rating.getLikes()));
+
     }
 }

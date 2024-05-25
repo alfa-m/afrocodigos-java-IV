@@ -20,7 +20,7 @@ public class Serie {
     private String poster;
     private ArrayList<String> actors;
     @OneToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name="ratingsID")
+    //@JoinColumn(name="ratingsID")
     private Ratings ratings;
 
 
