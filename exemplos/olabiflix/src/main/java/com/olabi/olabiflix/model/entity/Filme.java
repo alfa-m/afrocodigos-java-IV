@@ -26,6 +26,7 @@ public class Filme {
     private String Country;
     private String Awards;
 
+    protected Filme(){}
     public Filme(String title, String year, String rated, String released, String runtime, String genre, String director, String writer, String actors, String plot, String language, String country, String awards) {
         id = UUID.randomUUID();
         Title = title;
@@ -42,8 +43,6 @@ public class Filme {
         Country = country;
         Awards = awards;
     }
-
-    protected Filme(){}
 
     public UUID getId() {
         return id;
