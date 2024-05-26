@@ -1,7 +1,9 @@
 package com.olabi.olabiflix.model.entity;
 
 import com.olabi.olabiflix.model.value.Ratings;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.ArrayList;
@@ -19,8 +21,6 @@ public class Serie {
     private ArrayList<String> writers;
     private String poster;
     private ArrayList<String> actors;
-    @OneToOne(cascade=CascadeType.PERSIST)
-    //@JoinColumn(name="ratingsID")
     private Ratings ratings;
 
 
