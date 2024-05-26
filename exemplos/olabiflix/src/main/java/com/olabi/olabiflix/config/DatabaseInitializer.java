@@ -55,6 +55,5 @@ public class DatabaseInitializer implements CommandLineRunner {
 
         ratingsRepository.saveAll(ratings);
         ratingsRepository.findAll().forEach(rating -> System.out.printf("\nRatings\nID: %d\nRating: %s\nLikes: %s \n", rating.getRatingID(), rating.getRating(), rating.getLikes()));
-
     }
 }
