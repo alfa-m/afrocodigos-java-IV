@@ -1,6 +1,5 @@
 package com.olabi.olabiflix.model.value;
 
-import com.olabi.olabiflix.model.entity.Serie;
 import jakarta.persistence.Embeddable;
 
 

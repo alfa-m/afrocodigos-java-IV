@@ -33,7 +33,6 @@ public class DatabaseInitializer implements CommandLineRunner {
 
     public static final List<Serie> series = List.of(
             new Serie("Game of Thrones","8",new ArrayList<String>(Arrays.asList("Action","Adventure","Drama","Fantasy","Romance")),new ArrayList<String>(Arrays.asList("David Benioff","D.B. Weiss")),"https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_SX300.jpg",new ArrayList<String>(Arrays.asList("Peter Dinklage","Lena Headey","Emilia Clarke","Kit Harington")),new Ratings("9.3","1679892"))
-            //new Serie("Game of Thrones","8",new ArrayList<String>(Arrays.asList("Action","Adventure","Drama","Fantasy","Romance")),new ArrayList<String>(Arrays.asList("David Benioff","D.B. Weiss")),"https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_SX300.jpg",new ArrayList<String>(Arrays.asList("Peter Dinklage","Lena Headey","Emilia Clarke","Kit Harington")))
     );
 
     @Override
@@ -43,6 +42,6 @@ public class DatabaseInitializer implements CommandLineRunner {
         filmeRepository.findAll().forEach(filme -> System.out.printf("\nFilme\nTítulo: %s\nID: %s \n", filme.getTitle(), filme.getId().toString()));
 
         serieRepository.saveAll(series);
-        serieRepository.findAll().forEach(serie -> System.out.printf("\nSérie\nTítulo: %s\nID: %s \n", serie.getTitle(), serie.getId().toString()));
+        serieRepository.findAll().forEach(serie -> System.out.printf("\nSérie\nTítulo: %s\nID: %s \nRating: %s\nLikes: %s", serie.getTitle(), serie.getId().toString(), serie.getRatings().getRating(), serie.getRatings().getLikes()));
     }
 }

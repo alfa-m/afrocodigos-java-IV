@@ -2,7 +2,6 @@ package com.olabi.olabiflix;
 
 import com.olabi.olabiflix.model.entity.Filme;
 import com.olabi.olabiflix.model.entity.Serie;
-import com.olabi.olabiflix.model.value.Ratings;
 import com.olabi.olabiflix.repository.FilmeRepository;
 import com.olabi.olabiflix.repository.SerieRepository;
 import org.springframework.boot.SpringApplication;
@@ -25,6 +24,11 @@ public class OlabiflixApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OlabiflixApplication.class, args);
+	}
+
+	@GetMapping("/")
+	public String home(){
+		return "API do OlabiFlix";
 	}
 
 	@GetMapping("/hello")
