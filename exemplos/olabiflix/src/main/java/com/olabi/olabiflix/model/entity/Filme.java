@@ -156,4 +156,24 @@ public class Filme {
     public void setAwards(String awards) {
         Awards = awards;
     }
+
+    @Override
+    public String toString() {
+        return "Filme{" +
+                "id=" + id +
+                ", Title='" + Title + '\'' +
+                ", Year='" + Year + '\'' +
+                ", Rated='" + Rated + '\'' +
+                ", Released='" + Released + '\'' +
+                ", Runtime='" + Runtime + '\'' +
+                ", Genre='" + Genre + '\'' +
+                ", Director='" + Director + '\'' +
+                ", Writer='" + Writer + '\'' +
+                ", Actors='" + Actors + '\'' +
+                ", Plot='" + Plot + '\'' +
+                ", Language='" + Language + '\'' +
+                ", Country='" + Country + '\'' +
+                ", Awards='" + Awards + '\'' +
+                '}';
+    }
 }

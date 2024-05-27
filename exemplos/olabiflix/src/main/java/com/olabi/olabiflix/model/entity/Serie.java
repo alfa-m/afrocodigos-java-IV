@@ -115,4 +115,17 @@ public class Serie {
         this.ratings = ratings;
     }
 
+    @Override
+    public String toString() {
+        return "Serie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", totalSeasons='" + totalSeasons + '\'' +
+                ", genre=" + genre +
+                ", writers=" + writers +
+                ", poster='" + poster + '\'' +
+                ", actors=" + actors +
+                ", ratings=" + ratings +
+                '}';
+    }
 }

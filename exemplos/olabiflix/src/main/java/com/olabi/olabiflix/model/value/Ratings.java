@@ -30,4 +30,12 @@ public class Ratings {
     public void setLikes(String likes) {
         this.likes = likes;
     }
+
+    @Override
+    public String toString() {
+        return "Ratings{" +
+                "rating='" + rating + '\'' +
+                ", likes='" + likes + '\'' +
+                '}';
+    }
 }
