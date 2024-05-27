@@ -1,6 +1,7 @@
 package com.olabi.olabiflix.model.entity;
 
 import com.olabi.olabiflix.model.value.Ratings;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -21,6 +22,7 @@ public class Serie {
     private ArrayList<String> writers;
     private String poster;
     private ArrayList<String> actors;
+    @Embedded
     private Ratings ratings;
 
 
