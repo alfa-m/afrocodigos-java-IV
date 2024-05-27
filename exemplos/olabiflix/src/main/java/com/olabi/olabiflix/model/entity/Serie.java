@@ -41,7 +41,7 @@ public class Serie {
     }
 
     public Serie(String title, String totalSeasons, ArrayList<String> genre, ArrayList<String> writers, String poster, ArrayList<String> actors) {
-        this.id = UUID.randomUUID();
+        //this.id = UUID.randomUUID();
         this.title = title;
         this.totalSeasons = totalSeasons;
         this.genre = genre;
