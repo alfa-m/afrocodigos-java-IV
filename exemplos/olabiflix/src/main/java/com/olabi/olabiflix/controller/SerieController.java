@@ -22,11 +22,6 @@ public class SerieController {
         return repositorioSeries.findAll();
     }
 
-    @GetMapping
-    public List<Serie> getSeries() {
-        return repositorioSeries.findAll();
-    }
-
     @GetMapping("/{id}")
     public Optional<Serie> getSeriesById(@PathVariable("id") UUID id){
         return repositorioSeries.findById(id);
