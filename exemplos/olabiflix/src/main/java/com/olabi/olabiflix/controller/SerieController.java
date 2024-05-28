@@ -1,6 +1,5 @@
 package com.olabi.olabiflix.controller;
 
-import com.olabi.olabiflix.model.entity.Filme;
 import com.olabi.olabiflix.model.entity.Serie;
 import com.olabi.olabiflix.repository.SerieRepository;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +15,11 @@ public class SerieController {
 
     public SerieController(SerieRepository repositorioSeries) {
         this.repositorioSeries = repositorioSeries;
+    }
+
+    @GetMapping
+    public List<Serie> getSeries() {
+        return repositorioSeries.findAll();
     }
 
     @GetMapping
