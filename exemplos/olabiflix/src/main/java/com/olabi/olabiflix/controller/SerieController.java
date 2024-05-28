@@ -1,10 +1,13 @@
 package com.olabi.olabiflix.controller;
 
+import com.olabi.olabiflix.model.entity.Filme;
 import com.olabi.olabiflix.model.entity.Serie;
 import com.olabi.olabiflix.repository.SerieRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/series")
@@ -18,6 +21,11 @@ public class SerieController {
     @GetMapping
     public List<Serie> getSeries() {
         return repositorioSeries.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Serie> getSeriesById(@PathVariable("id") UUID id){
+        return repositorioSeries.findById(id);
     }
 
     @PostMapping("/criar")
