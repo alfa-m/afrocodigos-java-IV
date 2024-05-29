@@ -2,6 +2,7 @@ package com.olabi.olabiflix.controller;
 
 import com.olabi.olabiflix.model.entity.Filme;
 import com.olabi.olabiflix.repository.FilmeRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,6 +51,12 @@ public class FilmeController {
     @PostMapping("/criar")
     public Filme createFilme(@RequestBody Filme filmeBody){
         return repositorioFilmes.save(filmeBody);
+    }
+
+    @DeleteMapping("/{id}/delete")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteFilme(@PathVariable UUID id){
+        repositorioFilmes.deleteById(id);
     }
 
 }

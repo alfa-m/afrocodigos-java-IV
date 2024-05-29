@@ -2,6 +2,7 @@ package com.olabi.olabiflix.controller;
 
 import com.olabi.olabiflix.model.entity.Serie;
 import com.olabi.olabiflix.repository.SerieRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,4 +41,12 @@ public class SerieController {
     public Serie createSerie(@RequestBody Serie serieBody){
         return repositorioSeries.save(serieBody);
     }
+
+    @DeleteMapping("/{id}/delete")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteSerie(@PathVariable UUID id){
+        repositorioSeries.deleteById(id);
+    }
+
+
 }
