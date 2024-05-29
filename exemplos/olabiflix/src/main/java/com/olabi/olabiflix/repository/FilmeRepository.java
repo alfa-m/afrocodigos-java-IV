@@ -14,7 +14,7 @@ public interface FilmeRepository extends JpaRepository<Filme, UUID> {
     @Query("SELECT f FROM Filme f WHERE f.Title = :title")
     List<Filme> findByTitle(@Param("title") String title);
 
-    @Query("SELECT f FROM Filme f WHERE f.Genre = :genre")
+    @Query("SELECT f FROM Filme f WHERE f.Genre LIKE %:genre%")
     List<Filme> findByGenre(@Param("genre") String genre);
 
     @Query("SELECT f FROM Filme f WHERE f.Year = :year")
