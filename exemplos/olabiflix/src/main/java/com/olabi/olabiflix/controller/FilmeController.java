@@ -21,30 +21,25 @@ public class FilmeController {
     public List<Filme> getFilmes(@RequestParam(name = "title", required = false) String titulo,
                                  @RequestParam(name = "genre", required = false) String genero,
                                  @RequestParam(name = "year", required = false) String ano){
-        if (titulo != null || genero != null || ano != null){
-            if (titulo != null){
-                if (genero == null && ano == null){
-                    return repositorioFilmes.findByTitle(titulo);
-                } else if (genero != null && ano == null) {
-                    return repositorioFilmes.findByTitleAndGenre(titulo,genero);
-                } else if (genero == null && ano != null) {
-                    return repositorioFilmes.findByTitleAndRelease(titulo,ano);
-                } else {
-                    return repositorioFilmes.findByTitleGenreAndRelease(titulo,genero,ano);
-                }
-            } else if (genero != null) {
-                if (ano == null){
-                    return repositorioFilmes.findByGenre(genero);
-                }
-                else {
-                    return repositorioFilmes.findByGenreAndRelease(genero,ano);
-                }
+        if (titulo == null && genero == null && ano == null){
+            return repositorioFilmes.findAll();
+        } else if (titulo != null) {
+            if (genero == null && ano == null){
+                return repositorioFilmes.findByTitle(titulo);
+            } else if (ano == null) {
+                return repositorioFilmes.findByTitleAndGenre(titulo,genero);
+            } else if (genero == null){
+                return repositorioFilmes.findByTitleAndRelease(titulo,ano);
+            } else {
+                return repositorioFilmes.findByTitleGenreAndRelease(titulo,genero,ano);
             }
-            else {
+        } else {
+            if (genero == null){
                 return repositorioFilmes.findByRelease(ano);
+            } else {
+                return repositorioFilmes.findByGenre(genero);
             }
         }
-        return repositorioFilmes.findAll();
     }
 
     @GetMapping("/{id}")

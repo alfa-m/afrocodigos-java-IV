@@ -18,8 +18,17 @@ public class SerieController {
     }
 
     @GetMapping
-    public List<Serie> getSeries() {
-        return repositorioSeries.findAll();
+    public List<Serie> getSeries(@RequestParam(name = "title", required = false) String titulo,
+                                 @RequestParam(name = "genre", required = false) String genero){
+        if (titulo == null && genero == null){
+            return repositorioSeries.findAll();
+        } else if (genero == null) {
+            return repositorioSeries.findByTitle(titulo);
+        } else if (titulo == null) {
+            return repositorioSeries.findByGenre(genero);
+        } else{
+            return repositorioSeries.findByTitleAndGenre(titulo,genero);
+        }
     }
 
     @GetMapping("/{id}")
