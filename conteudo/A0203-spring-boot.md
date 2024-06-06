@@ -48,7 +48,7 @@ O Spring Initializr é uma ferramenta web que simplifica a configuração inicia
 ---
 
 ## Dependencias
-dependências são bibliotecas externas ou módulos de código que uma aplicação precisa para funcionar corretamente. 
+Dependências são bibliotecas externas ou módulos de código que uma aplicação precisa para funcionar corretamente. 
 
 ## Maven
 Maven é uma ferramenta de automação de compilação e gerenciamento de dependências para projetos Java. Ele simplifica o processo de construção de um projeto, gestão de dependências, execução de testes, e geração de documentação.
