@@ -12,15 +12,15 @@
 	<artifactId>olabiflix</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>olabiflix</name>
-	<description>API Olabiflix Séries</description>
+	<description>API Olabiflix Filmes e Séries</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-	        <dependency>
-	            <groupId>org.springframework.boot</groupId>
-	            <artifactId>spring-boot-starter-web</artifactId>
-	        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
