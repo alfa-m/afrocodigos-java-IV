@@ -34,8 +34,8 @@ public class SerieController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Serie>> getSeries (@RequestParam (value = "title", required = false) String titulo,
-                                                  @RequestParam (value = "genre", required = false) String genero){
+    public ResponseEntity<List<Serie>> getSeries (@RequestParam (name = "title", required = false) String titulo,
+                                                  @RequestParam (name = "genre", required = false) String genero){
         if (titulo != null && genero == null){
             log.info("Buscando séries que contenham '" + titulo + "' no título");
             List<Serie> serie = serieRepository.findSerieByTitleContainsIgnoreCase(titulo);
