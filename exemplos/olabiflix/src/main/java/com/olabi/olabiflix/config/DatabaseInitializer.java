@@ -2,6 +2,7 @@ package com.olabi.olabiflix.config;
 
 import com.olabi.olabiflix.model.entity.Serie;
 import com.olabi.olabiflix.model.value.Ratings;
+import com.olabi.olabiflix.repository.FilmeRepository;
 import com.olabi.olabiflix.repository.SerieRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +15,12 @@ import java.util.List;
 public class DatabaseInitializer implements CommandLineRunner {
     private static final Logger log = LoggerFactory.getLogger(DatabaseInitializer.class);
     private final SerieRepository repositorioSeries;
+    private final FilmeRepository repositorioFilmes;
 
 
-    public DatabaseInitializer(SerieRepository repositorioSeries) {
+    public DatabaseInitializer(SerieRepository repositorioSeries, FilmeRepository repositorioFilmes) {
         this.repositorioSeries = repositorioSeries;
+        this.repositorioFilmes = repositorioFilmes;
     }
 
     public static final List<Serie> series = List.of(
@@ -34,13 +37,16 @@ public class DatabaseInitializer implements CommandLineRunner {
             new Serie("Sherlock", "4", List.of("Crime", "Drama", "Mystery", "Thriller"), List.of("Mark Gatiss", "Steven Moffat"), "https://m.media-amazon.com/images/M/MV5BMTUyMTA5ODQwMl5BMl5BanBnXkFtZTcwOTc4NDQ5Mw@@._V1_SX300.jpg", List.of("Benedict Cumberbatch", "Martin Freeman", "Una Stubbs", "Rupert Graves"), new Ratings("9.1", "884329"))
     );
 
+    public static final List<Serie> filmes = List.of();
+
     @Override
     public void run(String... args) throws Exception {
         log.info("Inicializando o banco de dados");
-        log.info("Inserindo séries no bando de dados...");
-        log.info("****************************************");
+        log.info("Inserindo séries no banco de dados...");
         repositorioSeries.saveAll(series);
         log.info("Séries inseridas com sucesso!");
-        log.info("****************************************");
+        log.info("Inserindo filmes no banco de dados...");
+        repositorioFilmes.saveAll(filmes);
+        log.info("Filmes inseridos com sucesso!");
     }
 }
