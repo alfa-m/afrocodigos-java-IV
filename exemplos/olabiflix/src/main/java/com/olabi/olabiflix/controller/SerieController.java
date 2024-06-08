@@ -37,11 +37,11 @@ public class SerieController {
             List<Serie> serie = serieRepository.findSerieByTitleContainsIgnoreCase(titulo);
             return ResponseEntity.ok(serie);
         } else if (titulo == null && genero != null) {
-            log.info("Buscando séries que contenham o gênero '" + genero);
+            log.info("Buscando séries que contenham o gênero '" + genero + "'");
             List<Serie> serie = serieRepository.findSerieByGenreEqualsIgnoreCase(genero);
             return ResponseEntity.ok(serie);
         } else if (titulo != null && genero != null) {
-            log.info("Buscando séries que contenham '" + titulo + "' no título ou o gênero '" + genero);
+            log.info("Buscando séries que contenham '" + titulo + "' no título ou o gênero '" + genero + "'");
             List<Serie> serie = serieRepository.findSerieByTitleContainsIgnoreCaseOrGenreEqualsIgnoreCase(titulo, genero);
             return ResponseEntity.ok(serie);
         }
@@ -56,7 +56,7 @@ public class SerieController {
         return serieRepository.findById(id);
     }
 
-    @PutMapping("/{id}/modify")
+    @PutMapping("/modify/{id}")
     public ResponseEntity<Serie> totallyModifySeries(@PathVariable UUID id, @RequestBody Serie serieBody){
         Optional<Serie> serieProcurada = serieRepository.findById(id);
 
@@ -79,7 +79,7 @@ public class SerieController {
         return ResponseEntity.ok(serieModificada);
     }
 
-    @PatchMapping("/{id}/like")
+    @PatchMapping("/like/{id}")
     public ResponseEntity<Serie> likeSeries(@PathVariable UUID id){
         Optional<Serie> serieProcurada = serieRepository.findById(id);
 
@@ -99,7 +99,7 @@ public class SerieController {
         return ResponseEntity.ok(serieEncontrada);
     }
 
-    @DeleteMapping("/{id}/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Serie> deleteSeriesById(@PathVariable UUID id){
         Optional<Serie> serieProcurada = serieRepository.findById(id);
 
