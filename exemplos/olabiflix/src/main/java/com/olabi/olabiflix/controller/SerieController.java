@@ -9,10 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -20,7 +17,6 @@ import java.util.UUID;
 @RequestMapping("/series")
 public class SerieController {
     private final SerieRepository serieRepository;
-
     public static final Logger log = LoggerFactory.getLogger(SerieController.class);
 
     public SerieController(SerieRepository serieRepository) {
