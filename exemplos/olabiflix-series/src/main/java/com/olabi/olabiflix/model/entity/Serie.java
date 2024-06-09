@@ -25,7 +25,7 @@ public class Serie {
     @Embedded
     private Ratings ratings;
 
-    public Serie() {}
+    protected Serie() {}
 
     public Serie(String title, String totalSeasons, List<String> genre, List<String> writers, String poster, List<String> actors, Ratings ratings) {
         this.title = title;
