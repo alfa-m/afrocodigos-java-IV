@@ -90,11 +90,15 @@ public class SerieController {
         Serie serieEncontrada = serieProcurada.get();
         Ratings avaliacao = serieEncontrada.getRatings();
 
-        Integer likesAtuais = Integer.parseInt(avaliacao.getLikes());
-        Integer like = likesAtuais + 1;
-        avaliacao.setLikes(String.valueOf(like));
+        if (avaliacao != null){
+            String likes = avaliacao.getLikes();
+            Integer likesAtuais = (likes != null ? Integer.parseInt(likes) : 0);
+            Integer like = likesAtuais + 1;
+            avaliacao.setLikes(Integer.toString(like));
+        } else {
+            serieEncontrada.setRatings(new Ratings("0", "1"));
+        }
 
-        log.info("Dando like na série '" + serieEncontrada.getTitle() + "'");
         serieRepository.save(serieEncontrada);
         return ResponseEntity.ok(serieEncontrada);
     }
