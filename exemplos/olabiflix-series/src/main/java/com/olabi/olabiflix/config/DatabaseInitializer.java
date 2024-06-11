@@ -20,6 +20,7 @@ public class DatabaseInitializer implements CommandLineRunner {
         this.repositorioSeries = repositorioSeries;
     }
 
+    /*
     public static final List<Serie> series = List.of(
             new Serie("Game of Thrones", "8", List.of("Action", "Adventure", "Drama", "Fantasy", "Romance"), List.of("David Benioff", "D. B. Weiss"), "https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_SX300.jpg", List.of("Peter Dinklage", "Lena Headey", "Emilia Clarke", "Kit Harington"), new Ratings("9.3", "1679892")),
             new Serie("Stranger Things", "3", List.of("Drama", "Fantasy", "Horror", "Mystery", "Sci-Fi", "Thriller"), List.of("Matt Duffer", "Ross Duffer"), "https://m.media-amazon.com/images/M/MV5BMjEzMDAxOTUyMV5BMl5BanBnXkFtZTgwNzAxMzYzOTE@._V1_SX300.jpg", List.of("Winona Ryder", "David Harbour", "Finn Wolfhard", "Millie Bobby Brown"), new Ratings("8.8", "769106")),
@@ -34,11 +35,13 @@ public class DatabaseInitializer implements CommandLineRunner {
             new Serie("Sherlock", "4", List.of("Crime", "Drama", "Mystery", "Thriller"), List.of("Mark Gatiss", "Steven Moffat"), "https://m.media-amazon.com/images/M/MV5BMTUyMTA5ODQwMl5BMl5BanBnXkFtZTcwOTc4NDQ5Mw@@._V1_SX300.jpg", List.of("Benedict Cumberbatch", "Martin Freeman", "Una Stubbs", "Rupert Graves"), new Ratings("9.1", "884329"))
     );
 
+     */
+
     @Override
     public void run(String... args) throws Exception {
         log.info("Inicializando o banco de dados");
-        log.info("Inserindo séries no banco de dados...");
-        repositorioSeries.saveAll(series);
-        log.info("Séries inseridas com sucesso!");
+        //log.info("Inserindo séries no banco de dados...");
+        //repositorioSeries.saveAll(series);
+        //log.info("Séries inseridas com sucesso!");
     }
 }
