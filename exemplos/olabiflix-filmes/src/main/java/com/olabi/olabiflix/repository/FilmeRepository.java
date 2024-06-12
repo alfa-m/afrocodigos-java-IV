@@ -16,4 +16,6 @@ public interface FilmeRepository extends JpaRepository<Filme, UUID> {
     List<Filme> findFilmeByReleaseYearIsOrGenreContainsIgnoreCase(String ReleaseYear, String Genre);
 
     List<Filme> findFilmeByTitleContainsIgnoreCaseOrReleaseYearIsOrGenreContainsIgnoreCase(String Title, String ReleaseYear, String Genre);
+
+    boolean existsFilmeByTitleAndReleaseYearAndDirectorAndWriter(String Title, String ReleaseYear, String Director, String Writer);
 }

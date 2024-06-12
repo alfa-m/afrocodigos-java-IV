@@ -1,5 +1,6 @@
 package com.olabi.olabiflix.controller;
 
+import com.olabi.olabiflix.exception.FilmeException;
 import com.olabi.olabiflix.model.entity.Filme;
 import com.olabi.olabiflix.repository.FilmeRepository;
 import org.slf4j.Logger;
@@ -69,9 +70,16 @@ public class FilmeController {
     }
 
     @PostMapping("/create")
-    public void createFilme(@RequestBody Filme filme){
+    public ResponseEntity<Object> createFilme(@RequestBody Filme filme){
+        boolean filmeExiste = filmeRepository.existsFilmeByTitleAndReleaseYearAndDirectorAndWriter(filme.getTitle(), filme.getReleaseYear(), filme.getDirector(), filme.getWriter());
+
+        if (filmeExiste){
+            String mensagemErro = new FilmeException.FilmeDuplicadoException().getMessage();
+            return new ResponseEntity<>(mensagemErro, HttpStatus.CONFLICT);
+        }
+
         log.info("Adicionando o filme '" + filme.getTitle() + "' no banco de dados");
-        filmeRepository.save(filme);
+        return ResponseEntity.ok(filmeRepository.save(filme));
     }
 
     @PutMapping("/modify/{id}")
